@@ -13,22 +13,14 @@ const Router = require('./src/routers/index')
 const app = express()
 app.use(morgan('dev'))
 app.use(bodyParser.json())
-app.use(
-  helmet({
-    crossOriginEmbedderPolicy: false,
-    crossOriginResourcePolicy: false
-  })
-)
+helmet({
+  crossOriginResourcePolicy: false
+})
 app.use(xss())
 app.use(cors())
+app.disable('x-powered-by')
 app.use('/', Router)
 app.use('/img', express.static(path.join(__dirname, './public')))
-
-app.get('/ping', (req, res) => {
-  res.json({
-    message: 'PONG!'
-  })
-})
 
 const server = http.createServer(app)
 
@@ -44,10 +36,9 @@ io.on('connection', (socket) => {
   socketController(io, socket)
 })
 
-const PORT = process.env.PORT || 5000
-
-server.listen(PORT, () => {
-  console.log(`running di ${PORT}`)
+const PORT = process.env.PORT || 6000
+app.listen(PORT, () => {
+  console.log(`example app listening at http://localhost:${PORT}`)
 })
 
 app.all('*', (req, res, next) => {
