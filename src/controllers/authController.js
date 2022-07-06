@@ -29,6 +29,7 @@ module.exports = {
 
       response(res, data, 'Register Success', 200)
     } catch (error) {
+      console.log(error)
       next(createError)
     }
   },

@@ -104,7 +104,7 @@ module.exports = {
       console.log(token)
       const user = await usersModels.getDetailUser(id)
       const gambars = req.file.path
-      console.log(gambars);
+      console.log(gambars)
       const ress = await cloudinary.uploader.upload(gambars)
       const photo = ress.url
       if (!user.rowCount) {
