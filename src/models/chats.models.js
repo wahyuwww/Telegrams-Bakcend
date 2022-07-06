@@ -19,9 +19,9 @@ module.exports = {
       `SELECT chats.id, chats.message,chats.date, userSender.id AS sender_id, userSender.photo AS sender_photo, userReceiver.photo AS receiver_photo, userReceiver.id AS receiver_id, userSender.username AS sender, userReceiver.username AS receiver FROM chats LEFT JOIN users AS userSender ON chats.sender=userSender.id LEFT JOIN users AS userReceiver ON chats.receiver=userReceiver.id WHERE (sender='${sender}' AND receiver='${receiver}') OR (sender='${receiver}' AND receiver='${sender}') ORDER BY chats.date ASC`,
       (err, result) => {
         if (err) {
-          reject(err);
+          reject(err)
         }
-        resolve(result);
+        resolve(result)
       }
     )
   }),
