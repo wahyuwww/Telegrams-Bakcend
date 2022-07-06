@@ -8,10 +8,10 @@ const config = {
   user: DB_USER,
   password: DB_PASSWORD,
   database: DB_NAME,
-  port: DB_PORT
-  // ssl: {
-  //   rejectUnauthorized: false
-  // }
+  port: DB_PORT,
+  ssl: {
+    rejectUnauthorized: false
+  }
 }
 
 const db = new Pool(config)
