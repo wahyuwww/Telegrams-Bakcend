@@ -1,31 +1,55 @@
-require('dotenv').config()
 const express = require('express')
+const bodyParser = require('body-parser')
 const helmet = require('helmet')
+const cors = require('cors')
 const xss = require('xss-clean')
+const socketio = require('socket.io')
+const http = require('http')
+const path = require('path')
 const CreateError = require('http-errors')
 const morgan = require('morgan')
-const cors = require('cors')
-const path = require('path')
-const Router = require('./src/routes/index')
-
+const socketController = require('./src/socket')
+const Router = require('./src/routers/index')
 const app = express()
-app.use(express.json())
 app.use(morgan('dev'))
-app.use(cors())
-// app.use(helmet())
-helmet({
-  crossOriginResourcePolicy: false
-})
+app.use(bodyParser.json())
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: false
+  })
+)
 app.use(xss())
-app.disable('x-powered-by')
-
+app.use(cors())
 app.use('/', Router)
-app.use('/img', express.static(path.join(__dirname, './public/images')))
+app.use('/img', express.static(path.join(__dirname, './public')))
 
-const PORT = process.env.PORT || 6000
-app.listen(PORT, () => {
-  console.log(`example app listening at http://localhost:${PORT}`)
+app.get('/ping', (req, res) => {
+  res.json({
+    message: 'PONG!'
+  })
 })
+
+const server = http.createServer(app)
+
+const io = socketio(server, {
+  cors: {
+    origin: '*'
+  }
+})
+
+io.on('connection', (socket) => {
+  console.log('berhasil terkoneksi')
+
+  socketController(io, socket)
+})
+
+const PORT = process.env.PORT || 5000
+
+server.listen(PORT, () => {
+  console.log(`running di ${PORT}`)
+})
+
 app.all('*', (req, res, next) => {
   next(new CreateError.NotFound())
 })
