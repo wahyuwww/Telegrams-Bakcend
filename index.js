@@ -1,4 +1,5 @@
-require('dotenv').config()
+// const dotenv = require('dotenv')
+// dotenv.config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
@@ -14,14 +15,16 @@ const Router = require('./src/routers/index')
 const app = express()
 app.use(morgan('dev'))
 app.use(bodyParser.json())
-helmet({
-  crossOriginResourcePolicy: false
-})
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: false
+  })
+)
 app.use(xss())
 app.use(cors())
-app.disable('x-powered-by')
 app.use('/', Router)
-app.use('/img', express.static(path.join(__dirname, './public/image')))
+app.use('/img', express.static(path.join(__dirname, './public')))
 
 const server = http.createServer(app)
 
@@ -37,9 +40,10 @@ io.on('connection', (socket) => {
   socketController(io, socket)
 })
 
-const PORT = process.env.PORT || 6000
-app.listen(PORT, () => {
-  console.log(`example app listening at http://localhost:${PORT}`)
+const PORT = process.env.PORT || 5000
+
+server.listen(PORT, () => {
+  console.log(`running di ${PORT}`)
 })
 
 app.all('*', (req, res, next) => {

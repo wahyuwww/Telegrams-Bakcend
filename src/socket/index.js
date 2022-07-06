@@ -5,7 +5,6 @@ module.exports = (io, socket) => {
     socket.emit('ping-response', data)
   })
   socket.on('join-room', (data) => {
-    // My Room
     const {
       id, email, password, username
     } = data
