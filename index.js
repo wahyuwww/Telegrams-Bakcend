@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
@@ -20,7 +21,7 @@ app.use(xss())
 app.use(cors())
 app.disable('x-powered-by')
 app.use('/', Router)
-app.use('/img', express.static(path.join(__dirname, './public')))
+app.use('/img', express.static(path.join(__dirname, './public/image')))
 
 const server = http.createServer(app)
 
