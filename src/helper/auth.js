@@ -4,6 +4,7 @@ const generateToken = (payload) => {
     expiresIn: 60 * 5
   }
   const token = jwt.sign(payload, process.env.SECRET_KEY, verify)
+  console.log(token)
   return token
 }
 
