@@ -34,7 +34,7 @@ const io = socketio(server, {
   }
 })
 
-io.on('disconnect', (socket) => {
+io.on('connection', (socket) => {
   console.log('berhasil terkoneksi')
 
   socketController(io, socket)
