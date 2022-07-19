@@ -66,12 +66,12 @@ module.exports = {
         id: user.id,
         username: user.username
       }
-      user.token = authHelper.generateToken(payload)
+      const tokens = authHelper.generateToken(payload)
       const newRefreshToken = await authHelper.generateRefreshToken(payload)
       const data = {
         email,
         id: user.id,
-        token: user.token,
+        token: tokens,
         username: user.username,
         refreshToken: newRefreshToken
       }
