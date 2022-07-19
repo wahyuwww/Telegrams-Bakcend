@@ -1,33 +1,33 @@
 module.exports = {
-	success: (res, payload) => {
-		const {
-			code,
-			status,
-			message,
-			data,
-			pagination = false,
-			token = false
-		} = payload;
+  success: (res, payload) => {
+    const {
+      code,
+      status,
+      message,
+      data,
+      pagination = false,
+      token = false
+    } = payload
 
-		const response = {
-			code: code || 200,
-			status: status || 'success',
-			message,
-			data
-		};
+    const response = {
+      code: code || 200,
+      status: status || 'success',
+      message,
+      data
+    }
 
-		if (pagination) {
-			response.pagination = pagination;
-		}
+    if (pagination) {
+      response.pagination = pagination
+    }
 
-		if (token) {
-			response.token = token;
-		}
+    if (token) {
+      response.token = token
+    }
 
-		res.status(code).json(response);
+    res.status(code).json(response)
 
-		// PENGGUNAAN
-		/*
+    // PENGGUNAAN
+    /*
     success(res, {
       code: 200,
       status: success,
@@ -36,21 +36,21 @@ module.exports = {
       paggination: []
     })
     */
-	},
-	failed: (res, payload) => {
-		const { code, status, message, error } = payload;
+  },
+  failed: (res, payload) => {
+    const { code, status, message, error } = payload
 
-		const response = {
-			code: code || 500,
-			status: status || 'failed',
-			message,
-			error
-		};
+    const response = {
+      code: code || 500,
+      status: status || 'failed',
+      message,
+      error
+    }
 
-		res.status(code).json(response);
+    res.status(code).json(response)
 
-		// PENGGUNAAN
-		/*
+    // PENGGUNAAN
+    /*
     failed(res, {
       code: 400,
       status: error || failed,
@@ -58,5 +58,5 @@ module.exports = {
       error: []
     })
     */
-	}
-};
+  }
+}
