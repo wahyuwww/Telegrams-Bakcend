@@ -37,7 +37,7 @@ module.exports = {
   updateUsers: async (req, res, next) => {
     try {
       const token = req.headers.authorization.split(' ')[1]
-      const decoded = jwt.verify(token, process.env.SECRET_KEY_JWT)
+      const decoded = jwt.verify(token, process.env.SECRET_KEY)
       const id = decoded.id
 
       const user = await usersModels.getDetailUser(id)
@@ -99,7 +99,7 @@ module.exports = {
   updatePhoto: async (req, res, next) => {
     try {
       const token = req.headers.authorization.split(' ')[1]
-      const decoded = jwt.verify(token, process.env.SECRET_KEY_JWT)
+      const decoded = jwt.verify(token, process.env.SECRET_KEY)
       const id = decoded.id
       console.log(token)
       const user = await usersModels.getDetailUser(id)
@@ -153,7 +153,7 @@ module.exports = {
   deleteUsers: async (req, res, next) => {
     try {
       const token = req.headers.authorization.split(' ')[1]
-      const decoded = jwt.verify(token, process.env.SECRET_KEY_JWT)
+      const decoded = jwt.verify(token, process.env.SECRET_KEY)
       const id = decoded.id
 
       const user = await usersModels.getDetailUser(id)

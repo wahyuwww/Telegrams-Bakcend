@@ -67,13 +67,13 @@ module.exports = {
         username: user.username
       }
       user.token = authHelper.generateToken(payload)
-      const newRefreshToken = await authHelper.generateRefreshToken(payload)
+      user.refreshToken = authHelper.generateRefreshToken(payload)
       const data = {
         email,
         id: user.id,
         token: user.token,
         username: user.username,
-        refreshToken: newRefreshToken
+        refreshToken: user.refreshToken
       }
       console.log(data)
       response(res, data, 'selemat anda berhasil login', 200)
