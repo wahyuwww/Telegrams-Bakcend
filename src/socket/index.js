@@ -5,10 +5,7 @@ module.exports = (io, socket) => {
     socket.emit('ping-response', data)
   })
   socket.on('join-room', (data) => {
-    const {
-      id, email, password, username
-    } = data
-    socket.join(id)
+    socket.join(data.id)
   })
   socket.on('send-message', (data) => {
     store(data).then(async () => {

@@ -35,8 +35,6 @@ const io = socketio(server, {
 })
 
 io.on('connection', (socket) => {
-  console.log('berhasil terkoneksi')
-
   socketController(io, socket)
 })
 

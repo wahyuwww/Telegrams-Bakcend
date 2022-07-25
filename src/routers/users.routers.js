@@ -10,7 +10,7 @@ const router = express.Router()
 
 router
   .get('/users', protect, getUsers)
-  .get('/users/:id', protect, getDetailUsers)
+  .get('/users/:id', getDetailUsers)
   .put('/users', protect, updateUsers)
   .put('/photo', protect, upload, updatePhoto)
   .delete('/users', protect, deleteUsers)
