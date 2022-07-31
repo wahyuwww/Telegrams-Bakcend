@@ -85,7 +85,8 @@ CLOUDINARY_API_SECRET = "secret key"
 
 :rocket: [`Demo Telegrams Chats`](https://telegrams-chats.netlify.app/)
 
-
+## Link Dokumentasi Postman
+* [`Dokumentasi Postman`](https://documenter.getpostman.com/view/10953547/UzJQpuMv#2ab6de04-866c-4557-8424-057f26bd21f5) 
 
 ## Contact
 Wahyu Dwi Purwanto - [linkedin](https://www.linkedin.com/in/wahyu-dwi-purwanto/) - wahyu.aan2508@gmail.com
