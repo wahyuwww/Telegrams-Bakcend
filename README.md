@@ -1,4 +1,15 @@
-<h1 align="center">Telegrams Chats<br>RESTful API with Express.js</h1>
+<div align="center">
+<h2 align="center">Telegrams Chats<br>RESTful API with Express.js</h2>
+<img src="https://i.postimg.cc/CMXVVsR6/Group-5856.png" width="auto" height="230" cover />
+ </div>
+ <p align="center">
+    <br />
+    <a href="https://github.com/wahyuwww/Telegrams-Bakcend"><strong>Explore the docs »</strong></a>
+    <br />
+    <a href="https://telegram-chats.herokuapp.com">View Demo</a>
+  </p>
+
+<br />
 
 # Introduction
 Telegrams Chats is a real-time chat application that has several features, including private chat, viewing profile descriptions, and profile updates. Telegrams Chats are built using React.js as the frontend, Express.js as the backend, PostgreSQL as the data repository, and Socket.io to build applications in real time.
